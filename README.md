@@ -7,6 +7,7 @@ This repository contains the complete implementation and trained models for the 
 ## Overview
 
 Engine sound synthesis presents unique challenges that distinguish it from musical audio paradigms. Unlike sustained musical tones, engine sounds emerge from sequential combustion events creating acoustic phenomena with significant inharmonicity, extremely low fundamental frequencies (down to 5 Hz), and rapid temporal sequences with intervals under 15 milliseconds.
+Modeling these sound with both precision in timing and complexity in timbral evolution requires methods beyond those commonly found in musical sound synthesis.
 
 The PRCE framework addresses these challenges through two complementary synthesis configurations:
 
@@ -84,15 +85,18 @@ python scripts/train.py --model_type ptr --dataset C_full_set
 
 Customize model architecture:
 ```bash
-python scripts/train.py --model_type ptr --num_harmonics 150 --hidden_size 512 --gru_size 1024
+python scripts/train.py --model_type ptr --num_harmonics 128 --hidden_size 512 --gru_size 1024
 ```
 
 ### Inference
 
 Generate engine sounds using trained models:
 ```bash
-python scripts/inference.py --model_type hpn --dataset C_full_set
+python scripts/inference.py
 ```
+
+Note: As of now, the folder name of checkpoint for inference has to be defined directly within the inference.py
+CLI support will be inplemented soon. 
 
 ## Command Line Interface
 
@@ -108,6 +112,7 @@ The training and inference scripts use a unified CLI with the following key para
 Configuration is managed through a base config system combined with CLI parameter overrides.
 
 ## Model Variants
+### Harmoni-Plus-Noise (HPN)
 - Modified harmonic synthesis with systematic inharmonicity
 - Temporal-spectral structuring of noise components
 - Robust to harmonic irregularities
@@ -121,9 +126,9 @@ Configuration is managed through a base config system combined with CLI paramete
 
 ## Dataset
 
-This work utilizes the **Procedural Engine Sounds Dataset**, a comprehensive collection of procedurally generated engine audio with time-aligned control annotations. The dataset includes:
+This work utilizes the **Procedural Engine Sounds Dataset**, a comprehensive collection of procedurally generated engine audio with time-aligned control annotations.
 
-- 2.5 hours of engine audio across varied operating conditions
+- 19 hours of engine audio across varied operating conditions
 - Time-aligned RPM, torque, throttle, and DFCO annotations
 - Multiple engine configurations and acoustic scenarios
 - Systematic coverage of engine operating parameters
@@ -151,7 +156,7 @@ If you use this code or the Procedural Engines Dataset in your research, please 
   year={2025},
   month={August},
   school={Universitat Pompeu Fabra},
-  type={Master's thesis in Sound and Music Computing},
+  type={Master's dissertation in Sound and Music Computing},
   note={Supplementary code and models available at: https://github.com/rdoerfler/prce-model}
 }
 ```
