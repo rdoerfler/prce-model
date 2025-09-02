@@ -20,8 +20,6 @@ The PRCE framework addresses these challenges through two complementary synthesi
 - **Dual synthesis strategies** providing complementary optimization pathways
 - **Time-varying embeddings** of RPM, torque, throttle, and DFCO parameters
 - **Custom loss function** prioritizing spectral energy near engine-order harmonics
-- **Campbell diagram-inspired** training objectives from NVH analysis
-- **Comprehensive evaluation** on 2.5 hours of procedurally generated engine sounds
 
 ## Repository Structure
 
